@@ -1,0 +1,271 @@
+V "GNAT Lib v4.4"
+M P W=b
+P SS ZX
+R nnnnnvvnnnnnnnnvnnvnvvvvnnvnvnnnnnnnvnvnnvnnnnnnnnvnnnnvnvvnnnnnnnnnnnnnnnnnn
+
+U client%b		client.adb		aadb24d1 NE OO SU
+W ada%s			ada.ads			ada.ali
+W ada.calendar%s	a-calend.adb		a-calend.ali
+W ada.calendar.delays%s	a-caldel.adb		a-caldel.ali
+W ada.exceptions%s	a-except.adb		a-except.ali
+W ada.numerics%s	a-numeri.ads		a-numeri.ali
+W ada.numerics.discrete_random%s
+W ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W gada%s		gada.ads		gada.ali
+W gada.advanced_graphics%s  gada-advanced_graphics.adb  gada-advanced_graphics.ali
+W gada.core%s		gada-core.adb		gada-core.ali
+W graphic%s		graphic.adb		graphic.ali
+W interfaces%s		interfac.ads		interfac.ali
+W population%s		population.adb		population.ali
+W system%s		system.ads		system.ali
+W system.arith_64%s	s-arit64.adb		s-arit64.ali
+W system.exception_table%s  s-exctab.adb	s-exctab.ali
+W system.img_int%s	s-imgint.adb		s-imgint.ali
+W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+W system.soft_links%s	s-soflin.adb		s-soflin.ali
+W system.standard_library%s  s-stalib.adb	s-stalib.ali
+W system.string_ops_concat_3%s  s-sopco3.adb	s-sopco3.ali
+W system.string_ops_concat_5%s  s-sopco5.adb	s-sopco5.ali
+W system.val_int%s	s-valint.adb		s-valint.ali
+
+D ada.ads		20070406091342 9c7dd3ea
+D a-calend.ads		20090409232307 19486c30
+D a-caldel.ads		20090409232307 c565f6eb
+D a-except.ads		20090409232307 b54b55de
+D a-finali.ads		20090409232307 9eaacebd
+D a-filico.ads		20090409232307 9299732a
+D a-ioexce.ads		20070406091342 be0900a0
+D a-numeri.ads		20080324174807 1cf3e608
+D a-nudira.ads		20090409232307 56734efa
+D a-nudira.adb		20090409232307 cb202240
+D a-stream.ads		20090409232307 34aca5be
+D a-tags.ads		20090409232307 bfa07446
+D a-textio.ads		20090409232307 fe8af46e
+D a-unccon.ads		20070406091342 51e09df2
+D a-uncdea.ads		20070406091342 dc667e6d
+D client.adb		20130510135313 8772f161
+D gada.ads		20120829115516 606ae7e9
+D gada-advanced_graphics.ads  20120829115516 6a9565bb
+D gada-core.ads		20120829115516 398f66f8
+D gada-gr_core.ads	20120829115516 40cc43ef
+D gdk.ads		20091225112831 c70a781f
+D gdk-bitmap.ads	20091225112831 21c4d147
+D gdk-color.ads		20091225112831 25c4c95e
+D gdk-cursor.ads	20091225112831 f7eca646
+D gdk-display.ads	20091225112831 68455e23
+D gdk-drawable.ads	20091225112831 9933e9ff
+D gdk-event.ads		20091225112831 0620510f
+D gdk-font.ads		20091225112831 2070ac1f
+D gdk-gc.ads		20091225112831 70f52438
+D gdk-pixbuf.ads	20091225112831 a1fbb3ff
+D gdk-pixmap.ads	20091225112831 8e3a393a
+D gdk-rectangle.ads	20091225112831 aa853dee
+D gdk-region.ads	20091225112831 254dc05c
+D gdk-rgb.ads		20091225112831 8731d030
+D gdk-types.ads		20091225112831 bde13b0a
+D gdk-visual.ads	20091225112831 62a3aa2f
+D gdk-window.ads	20091225112831 c3ee3269
+D glib.ads		20091225112831 54df1dc2
+D glib-error.ads	20091225112831 43d7524c
+D glib-generic_properties.ads  20091225112831 bc53e554
+D glib-glist.ads	20091225112831 86ff2c8b
+D glib-gslist.ads	20091225112831 172859be
+D glib-object.ads	20091225112831 d347b7c2
+D glib-values.ads	20091225112831 233fe8b3
+D graphic.ads		20130510134156 f005e5d6
+D gtkada.ads		20091225112832 1096f5e5
+D gtkada-types.ads	20091225112832 b2ab92a2
+D interfac.ads		20090409232307 a69cad5c
+D i-c.ads		20070406091342 bc3ef662
+D i-cstrin.ads		20090409232307 841d8a31
+D i-cstrea.ads		20090409232307 e1e064a9
+D pango.ads		20091225112832 567c5424
+D pango-attributes.ads	20091225112832 21e060ad
+D pango-context.ads	20091225112832 dbda6b1f
+D pango-enums.ads	20091225112832 f87f8fab
+D pango-font.ads	20091225112832 4df735fa
+D pango-layout.ads	20091225112832 501b6bc2
+D pango-tabs.ads	20091225112832 06755cb4
+D population.ads	20130406122856 6974ab7b
+D population.adb	20130325214443 d5496e8d
+D system.ads		20100127085936 15e10948
+D s-arit64.ads		20090409232307 ded5f422
+D s-crtl.ads		20090409232307 997234a1
+D s-exctab.ads		20090409232307 5c1c61ae
+D s-ficobl.ads		20090409232307 8bb681e5
+D s-finimp.ads		20090409232307 9449f4cb
+D s-finroo.ads		20090409232307 1408f9d1
+D s-imgint.ads		20090409232307 f77d133c
+D s-parame.ads		20090409232307 f32e56e9
+D s-secsta.ads		20090409232307 7bae3621
+D s-soflin.ads		20090409232307 0c6fd39d
+D s-stache.ads		20090409232307 257b3be8
+D s-stalib.ads		20090409232307 52b793d5
+D s-stoele.ads		20090409232307 ed966df3
+D s-stoele.adb		20090409232307 e9998c78
+D s-stratt.ads		20090409232307 fef7c1da
+D s-strops.ads		20090409232307 845f72d2
+D s-sopco3.ads		20090409232307 72ce1063
+D s-sopco4.ads		20090409232307 bc112723
+D s-sopco5.ads		20090409232307 191315e8
+D s-traent.ads		20090409232307 bd5f2753
+D s-unstyp.ads		20090409232307 c0f9fae5
+D s-valint.ads		20090409232307 d23209d2
+D s-wchcon.ads		20090409232307 ab028799
+D unchconv.ads		20070406091342 34860a55
+X 1 ada.ads
+16K9*Ada 19e8 16|1r6 2r6 2r24 226r22 246r31 253r22 266r22 314r16
+X 2 a-calend.ads
+36K13*Calendar 358e17 16|2w10 2r28
+X 13 a-textio.ads
+48K13*Text_IO 506e16 16|1w10 226r26 246r35 253r26 266r26 314r20
+263U14*Put_Line 16|226r34 246r43 253r34 266r34 314r28
+X 16 client.adb
+8U11*Client 8b11 530l5 530t11
+11i4 Nb_Couple{positive} 53m13 61m13 69m13 77m13 85m13 93m13 154r48 158r50
+. 166r30 169r26 170r29 176r29 180r23 196r44 199r36 220r26 223r32 233r26 236r32
+. 240r35 243r42 260r26 263r32 282r29 283r25 287r25 299r26 302r49 324r30 328r26
+. 329r29 335r23 336r29 340r35 379r26 380r29 426r16 448r16
+12b4 Continuer{boolean} 110m13 145r14 355r45 416r20 459r26 487r26 506r17
+13b4 Recommencer{boolean} 102m13 135m7 355r23 422r32 440r20 462r26 488r25
+. 504r14
+14b4 choix{boolean} 31m13 39m13 413m36 422r13
+15r4 Evt{18|32R9} 25m10 26r34 26r54 26r76 26r98 26r120 34r29 34r49 34r71
+. 34r93 34r115 42r32 42r52 42r74 42r96 42r118 49r33 49r53 49r75 49r97 49r119
+. 57r33 57r53 57r75 57r97 57r119 65r33 65r53 65r75 65r97 65r119 73r33 73r53
+. 73r75 73r97 73r119 81r33 81r53 81r75 81r97 81r119 89r33 89r53 89r75 89r97
+. 89r119 97r33 97r53 97r75 97r97 97r118 105r30 105r50 105r72 105r94 105r115
+. 524m10 525r13 525r33 525r53 525r75 525r95
+17U14 Gestion_Boutons 17b14 17>30 17>43 17>48 17>56 17>65 17>74 114l8 114t23
+. 143r7 353r16 415r13 456r22 505r10
+17b30 Directement{boolean} 26r13
+17b43 Pap{boolean} 34r16
+17b48 Fleche{boolean} 42r16
+17b56 numeros{boolean} 49r16 57r16 65r16 73r16 81r16 89r16
+17b65 Restart{boolean} 97r16
+17b74 Quit{boolean} 105r16
+120i4 I_Femme{positive} 221m16 223r22 224r43 225r37 229m19 229r30 234m16
+. 236r22 237r43 237r80 238r39 256m19 256r30 261m16 263r22 264r39 265r42 269m19
+. 269r30
+120i12 I_Femme1{positive} 241m25 243r31 244r48 244r85 245r46 249m28 249r40
+121i4 Compteur{integer} 158r60 511m7 511r19
+122b4 Termine{boolean} 399m10 427r26 430m19 452r26 480m19 481r26
+154A15 T_Traits_Precedents(natural)<integer> 156r24
+156a10 Traits_Prec{154A15} 224r25 237r62 244r67 264r57 304m22 309m36 313r22
+. 314r78
+158K18 Ma_Population[59|9] 159r14
+165U20 Demande_Hommes 165b20 165=35 183l14 183t28 429r19 454r19
+165a35 P{59|17A9[158]} 171r31 171r71 172r51 177m46
+166i13 Min{integer} 171r82 172m22 180m16
+167i13 Elu{59|15I12[158]} 173m22 177r28
+169i17 I1{integer} 171r33 171r73 172r53 177r48
+170i20 I2{integer} 171r36 171r76 172r56 173r29
+176i20 I3{integer} 177r22 177r51
+189V19 Condition_Fin{boolean} 189b19 189>33 209l14 209t27 430r30 480r30
+189a33 P{59|17A9[158]} 200r31
+190b13 OK{boolean} 194m13 196r19 202m40 203m24 208r20
+191i13 I_Hauteur{positive} 197m16
+191i23 I_Largeur{positive} 195m13 196r31 200r43 206m16 206r29
+192i13 Compteur{natural} 198m16 200m59 200r71 202r22
+199i20 I_Hauteur{integer} 200r33
+215U20 Demande_Tracer_Trait 215b20 215>42 275l14 275t34 370r19 436r13 449r16
+. 474r22
+215a42 P{59|17A9[158]} 237r38 244r43 264r34
+220i17 I1{integer} 224r37 225r34
+233i17 I1{integer} 237r40 237r74 238r36
+240i26 I1{integer} 244r45 244r79 245r43
+260i17 I1{integer} 264r36 264r69 265r39
+280U20 Demande_Afficher_Couple_Voeux 280b20 280>51 290l14 290t43 367r19 403r10
+. 471r22
+280a51 P{59|17A9[158]} 284r47 288r47
+283i17 I{integer} 284r49 284r74
+287i17 I{integer} 288r49 288r74
+295U20 Actualise_Traits_Prec 295b20 295>42 316l14 316t35 375r16 483r22
+295a42 P{59|17A9[158]} 303r31
+296i13 I2{natural} 301m16 302r43 303r36 304r41 307m19 307r25
+297b13 Trouve{boolean} 300m16 302r26 305m22 309r23
+299i17 I1{integer} 303r33 304r34 309r48
+313i17 I{integer} 314r51 314r90
+323U20 Avis_Femmes 323b20 323=32 323>57 388l14 388t25 431r19 484r22
+323a32 P{59|17A9[158]} 330r31 330r71 331r51 337r50 338m31 339m33 341r61 341m85
+. 367r49 370r40 374r26 375r38 381r31 382m31 383m31
+323b57 Direct{boolean} 348r20
+324i13 Min{integer} 330r82 331m22 335m16
+325i13 Elu{59|15I12[158]} 332m22 337r28
+328i17 I1{integer} 330r36 330r76 331r56 337r55 338r36 339r38 341r34
+329i20 I2{integer} 330r33 330r73 331r53 332r29
+336i20 I3{integer} 337r22 337r52 338r33 339r35 341r63 341r87
+340i26 I4{integer} 341r28 341r66 341r90
+379i17 I1{integer} 381r33 382r33 383r33
+380i20 I2{integer} 381r36 382r36 383r36
+394a10 P{59|17A9[158]} 400m32 403r40 429m34 430r44 431m31 436r34 449r37 454m34
+. 471r52 474r43 480r44 482r32 483r44 484m34
+395i10 Compt{positive} 451m16 455r22 491m19 491r28
+514L6 Fin 145r35 416r41 459r47 487r47 506r38
+X 17 gada.ads
+1K9*GAda 16|4r6 4r34 5r6 5r21 17|3e9
+X 18 gada-advanced_graphics.ads
+3K14*Advanced_Graphics 16|4w11 4r39 18|64e27
+32R9*T_Event 16|15r10 18|50e15
+34b7*Trouve{boolean} 16|20r24 26r38 34r33 42r36 49r37 57r37 65r37 73r37 81r37
+. 89r37 97r37 105r34 525r17
+43i7*X{integer} 16|26r58 26r80 34r53 34r75 42r56 42r78 49r57 49r79 57r57
+. 57r79 65r57 65r79 73r57 73r79 81r57 81r79 89r57 89r79 97r57 97r79 105r54
+. 105r76 525r37 525r57
+43i10*Y{integer} 16|26r102 26r124 34r97 34r119 42r100 42r122 49r101 49r123
+. 57r101 57r123 65r101 65r123 73r101 73r123 81r101 81r123 89r101 89r123 97r101
+. 97r122 105r98 105r119 525r79 525r99
+54V13*Next_Event{32R9} 16|20r13 25r17 524r15
+X 19 gada-core.ads
+3K14*Core 16|5w11 5r26 19|56e14
+50U14*Abort_Gtk_Loop 16|518r8
+X 45 graphic.ads
+1K9*graphic 16|3w6 3r19 45|47e12
+4A9*T_Voeux(character)<integer>
+5X4*Image_Manquante 16|521r9
+7U14*Image_Blanche 16|127r4 356r19 402r10 463r22 510r7
+9U14*Intro 16|132r7
+11U14*Indication 16|133r7 351r16 359r19 371r19 411r10 475r22
+13U14*Enleve_Indication 16|131r7 350r16 358r19 369r19 420r10 473r22 499r7
+15U14*Aurevoir 16|517r8
+17U14*Afficher_Etat 16|368r19 472r22 501r7
+19U14*Bouton_Direct 16|27r13 29r13 137r7 361r19 405r10 437r13 442r13 465r22
+21U14*Bouton_PaP 16|35r13 37r13 138r7 406r10 424r13 500r7
+23U14*Bouton_Fleche 16|43r13 45r13 362r19 443r13 466r22
+25U14*Bouton_Recommencer 16|98r13 100r13 139r7 217r13 273r13 363r19 407r10
+. 438r13 444r13 467r22
+27U14*Bouton_Quitter 16|106r13 108r13 140r7 218r13 274r13 364r19 408r10 445r13
+. 468r22
+29U14*Bouton_Num 16|50r13 52r13 58r13 60r13 66r13 68r13 74r13 76r13 82r13
+. 84r13 90r13 92r13 141r7 365r19 409r10 446r13 469r22
+31U14*Dim_im 16|126r4
+35U14*Afficher_Couple 16|282r13
+37U14*Afficher_Voeux 16|284r16 288r16
+39U14*Trace_Trait 16|225r22 245r31
+41U14*Trace_Trait_anim 16|265r22
+43U14*Enlever_trait 16|238r22
+45U14*Afficher_Erreur 16|522r7
+X 59 population.ads
+9k9*Population 16|6w6 158r39 59|99e15
+15I12 Voeu{positive} 16|167r19[158] 325r19[158]
+17A9 T_Population(88R9[16|158]) 16|165r46[158] 189r40[158] 215r49[158] 280r58[158]
+. 295r49[158] 323r43[158] 394r14[158]
+22U14 initialise_population 16|400r10[158]
+25V13 Get_Voeux_Homme{45|4A9} 16|284r31[158]
+29V13 Get_Voeux_Femme{45|4A9} 16|288r31[158]
+33V13 Get_Ponderation_Homme{15I12[16|158]} 16|171r49[158] 172r29[158]
+37V13 Get_Ponderation_Femme{15I12[16|158]} 16|330r49[158] 331r29[158]
+41V13 Get_Nb_Couple{15I12[16|158]} 16|413r13[158]
+45V13 Get_Lies{boolean} 16|171r22[158] 200r22[158] 237r29[158] 244r34[158]
+. 264r25[158] 303r22[158] 330r22[158] 337r41[158]
+49V13 Get_Rejete{boolean} 16|341r50[158]
+53V13 Get_Temp{boolean} 16|381r22[158]
+61U14 Set_Lies 16|177r37[158] 338r22[158] 383r22[158]
+65U14 Set_Rejete 16|339r22[158]
+69U14 Set_Temp 16|341r76[158] 382r22[158]
+76U14 To_String 16|374r16[158] 482r22[158]
+80V13 Nombre_Personne_Homme{character} 16|284r52[158]
+84V13 Nombre_Personne_Femme{character} 16|288r52[158]
+88R9 T_Individu
+

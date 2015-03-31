@@ -1,0 +1,529 @@
+with Ada.Text_IO;
+with Ada.Calendar; use Ada.Calendar;
+with Graphic; use Graphic;
+with Gada.Advanced_Graphics; use Gada.Advanced_Graphics;
+with Gada.Core; use Gada.Core;
+with Population;
+
+procedure Client is
+
+
+   Nb_Couple : Positive;
+   Continuer : Boolean := True;
+   Recommencer : Boolean;
+   choix: Boolean;
+   Evt : T_Event;
+
+   procedure Gestion_Boutons(Directement, Pap, Fleche, numeros, Restart, Quit : in Boolean) is
+   begin
+
+      while Next_Event.Trouve loop --vidage mémoire des clicks
+         null;
+      end loop;
+
+      loop
+         Evt := Next_Event;
+         if Directement and then Evt.Trouve and then Evt.X >= 817 and then Evt.X <= 987 and then Evt.Y >= 515 and then Evt.Y <= 570 then -- Si on clique sur Direct
+            Bouton_Direct(True,false);
+            delay 0.2;
+            Bouton_Direct(False,false);
+            delay 0.2;
+            Choix := True;
+            exit;
+
+         elsif Pap and then Evt.Trouve and then Evt.X >= 817 and then Evt.X <= 987 and then Evt.Y >= 450 and then Evt.Y <= 505 then -- Si on clique sur Pas à Pas
+            Bouton_PaP(True,false);
+            delay 0.2;
+            Bouton_PaP(False,false);
+            delay 0.2;
+            Choix := False;
+            exit;
+
+         elsif Fleche and then Evt.Trouve and then Evt.X >= 817 and then Evt.X <= 987 and then Evt.Y >= 450 and then Evt.Y <= 505 then -- Si on clique sur la flèche
+            Bouton_Fleche(True);
+            delay 0.2;
+            Bouton_Fleche(False);
+            delay 0.2;
+            exit;
+
+         elsif numeros and then Evt.Trouve and then Evt.X >= 817 and then Evt.X <= 857 and then Evt.Y >= 395 and then Evt.Y <= 440 then -- Sur 1
+            Bouton_Num(true,false,1);
+            delay 0.2;
+            Bouton_Num(false,false,1);
+            Nb_Couple := 1;
+            delay 0.2;
+            exit;
+
+         elsif numeros and then Evt.Trouve and then Evt.X >= 882 and then Evt.X <= 922 and then Evt.Y >= 395 and then Evt.Y <= 440 then-- Sur 2
+            Bouton_Num(true,false,2);
+            delay 0.2;
+            Bouton_Num(false,false,1);
+            Nb_Couple := 2;
+            delay 0.2;
+            exit;
+
+         elsif numeros and then Evt.Trouve and then Evt.X >= 947 and then Evt.X <= 987 and then Evt.Y >= 395 and then Evt.Y <= 440 then-- Sur 3
+            Bouton_Num(true,false,3);
+            delay 0.2;
+            Bouton_Num(false,false,1);
+            Nb_Couple := 3;
+            delay 0.2;
+            exit;
+
+         elsif numeros and then Evt.Trouve and then Evt.X >= 817 and then Evt.X <= 857 and then Evt.Y >= 350 and then Evt.Y <= 395 then-- Sur 4
+            Bouton_Num(true,false,4);
+            delay 0.2;
+            Bouton_Num(false,false,1);
+            Nb_Couple := 4;
+            delay 0.2;
+            exit;
+
+         elsif numeros and then Evt.Trouve and then Evt.X >= 882 and then Evt.X <= 922 and then Evt.Y >= 350 and then Evt.Y <= 395 then-- Sur 5
+            Bouton_Num(true,false,5);
+            delay 0.2;
+            Bouton_Num(false,false,1);
+            Nb_Couple := 5;
+            delay 0.2;
+            exit;
+
+         elsif numeros and then Evt.Trouve and then Evt.X >= 947 and then Evt.X <= 987 and then Evt.Y >= 350 and then Evt.Y <= 395 then-- Sur 6
+            Bouton_Num(true,false,6);
+            delay 0.2;
+            Bouton_Num(false,false,1);
+            Nb_Couple := 6;
+            delay 0.2;
+            exit;
+
+         elsif Restart and then Evt.Trouve and then Evt.X >= 817 and then Evt.X <= 987 and then Evt.Y >= 95 and then Evt.Y <= 140 then -- Si on clique sur Recommencer
+            Bouton_Recommencer(True,false);
+            delay 0.2;
+            Bouton_Recommencer(false,false);
+            delay 0.2;
+            Recommencer := True;
+            exit;
+
+         elsif Quit and then Evt.Trouve and then Evt.X >= 817 and then Evt.X <= 987 and then Evt.Y >= 30 and then Evt.Y <= 85 then -- Si on clique sur Quitter
+            Bouton_Quitter(true);
+            delay 0.2;
+            Bouton_Quitter(False);
+            delay 0.2;
+            Continuer := False; -- Goto impossible puisque l'on est dans une sous procedure
+            exit;
+         end if;
+      end loop;
+   end Gestion_Boutons;
+
+   ------------------------------------------
+   ------------       MAIN       ------------
+   ------------------------------------------
+
+begin
+
+   I_Femme,I_Femme1 : Positive;	
+   Compteur : Integer := 0;
+   Termine : Boolean;
+   Dim_Im;
+   Image_Blanche;
+
+   loop -- Boucle principale que l'on quitte grâce à des GOTO.
+
+      Enleve_Indication;
+      Intro;
+      Indication(1);
+
+      Recommencer := False;
+
+      Bouton_Direct(False,true);
+      Bouton_PaP(False,true);
+      Bouton_Recommencer(False,True);
+      Bouton_Quitter(False);
+      Bouton_Num(False,false,1);
+
+      Gestion_Boutons(False,False,false,True,False,True);
+
+      if not(Continuer) then goto Fin;
+      end if;
+
+      -----------------------------------------------
+      ----Bloc déclare pour instancier Population----
+      -----------------------------------------------
+
+      declare
+
+         type T_Traits_Precedents is array (1..Nb_Couple) of Natural;
+
+         Traits_Prec : T_Traits_Precedents := (others => 0);
+
+         package Ma_Population is new Population(Nb_Couple,compteur); -- instanciation de population avec le nombre de couple récupéré et le compteur pour la génération aléatoire.
+         use Ma_Population;
+
+         ------------------------------------------
+         ------------------------------------------
+
+         -- Cette procedure lie les hommes à la femme qu'ils préfèrent et d'où ils n'ont pas été rejetés
+         procedure Demande_Hommes(P : in out T_Population) is
+            Min : Integer := Nb_Couple +1;
+            Elu : Voeu;
+         begin
+            for I1 in 1..Nb_Couple loop
+               for I2 in 1..Nb_Couple loop
+                  if Get_Lies(P,I1,I2) and then Get_Ponderation_Homme(P,I1,I2) < Min then
+                     Min := Get_Ponderation_Homme(P,I1,I2);
+                     Elu := I2;
+                  end if;
+               end loop;
+               for I3 in 1..Nb_Couple loop
+                  if I3 /= Elu then Set_Lies(P,I1,I3,false);
+                  end if;
+               end loop;
+               Min := Nb_Couple +1;
+            end loop;
+
+         end Demande_Hommes;
+
+         ------------------------------------------
+         ------------------------------------------
+
+         -- cette fonction renvoie Vrai si le procédé de Gale et Shapley en cours est terminé
+         function Condition_Fin(P : in T_Population) return Boolean is
+            OK : Boolean;
+            I_Hauteur,I_Largeur : Positive;
+            Compteur : Natural;
+         begin
+            OK := True;
+            I_Largeur := 1;
+            while OK and then I_Largeur <= Nb_Couple loop
+               I_Hauteur := 1;
+               Compteur := 0;
+               for I_Hauteur in 1..Nb_Couple loop
+                  if Get_Lies(P,I_Hauteur,I_Largeur) then Compteur := Compteur+1;
+                  end if;
+                  if Compteur = 1 then OK := True;
+                  else OK := False;
+                  end if;
+               end loop;
+               I_Largeur := I_Largeur+1;
+            end loop;
+            return OK;
+         end Condition_Fin;
+
+         ------------------------------------------
+         ------------------------------------------
+
+         -- Cette procedure demande à Graphic de tracer les traits entre les personnes liées;
+         procedure Demande_Tracer_Trait (P : in T_Population) is
+         begin
+            Bouton_Recommencer(False,True);
+            Bouton_Quitter(True);
+
+            for I1 in 1..Nb_Couple loop
+               I_femme := 1;
+               loop
+                  if I_femme > Nb_Couple then exit;
+                  elsif Traits_Prec(I1) = I_Femme then
+                     Trace_Trait(I1,I_Femme);
+                     Ada.Text_IO.Put_Line("trace trait direct");
+                     exit;
+                  end if;
+                  I_Femme := I_Femme + 1;
+               end loop;
+            end loop;
+
+            for I1 in 1..Nb_Couple loop
+               I_femme := 1;
+               loop
+                  if I_femme > Nb_Couple then exit;
+                  elsif not(Get_Lies(P,I1,I_Femme)) and then Traits_Prec(I1) = I_Femme then
+                     Enlever_Trait(I1,I_Femme);
+
+                     for I1 in 1..Nb_Couple loop
+                        I_femme1 := 1;
+                        loop
+                           if I_femme1 > Nb_Couple then exit;
+                           elsif Get_Lies(P,I1,I_Femme1) and then Traits_Prec(I1) = I_Femme1 then
+                              Trace_Trait(I1,I_Femme1);
+                              Ada.Text_IO.Put_Line("trace trait direct");
+                              exit;
+                           end if;
+                           I_Femme1 := I_Femme1 + 1;
+                        end loop;
+                     end loop;
+
+                     Ada.Text_IO.Put_Line("Enleve trait");
+                     exit;
+                  end if;
+                  I_Femme := I_Femme + 1;
+               end loop;
+            end loop;
+
+            for I1 in 1..Nb_Couple loop
+               I_femme := 1;
+               loop
+                  if I_femme > Nb_Couple then exit;
+                  elsif Get_Lies(P,I1,I_Femme) and then Traits_Prec(I1) = 0 then
+                     Trace_Trait_anim(I1,I_Femme);
+                     Ada.Text_IO.Put_Line("Trace trait anim");
+                     exit;
+                  end if;
+                  I_Femme := I_Femme + 1;
+               end loop;
+            end loop;
+
+            Bouton_Recommencer(False,false);
+            Bouton_Quitter(False);
+         end Demande_Tracer_Trait;
+
+         ------------------------------------------
+         ------------------------------------------
+
+         procedure Demande_Afficher_Couple_Voeux (P : in T_Population) is
+         begin
+            Afficher_Couple(Nb_Couple);
+            for I in 1..Nb_Couple loop
+               Afficher_Voeux(Get_Voeux_Homme(P,I),Nombre_Personne_Homme(I));
+            end loop;
+
+            for I in 1..Nb_Couple loop
+               Afficher_Voeux(Get_Voeux_Femme(P,I),Nombre_Personne_Femme(I));
+            end loop;
+         end Demande_Afficher_Couple_Voeux;
+
+         ------------------------------------------
+         ------------------------------------------
+
+         procedure Actualise_Traits_Prec(P : in T_Population) is
+            I2 : Natural;
+            Trouve : Boolean;
+         begin
+            for I1 in 1..Nb_Couple loop
+               Trouve := False;
+               I2 := 1;
+               while not(Trouve) and then I2 <= Nb_Couple loop
+                  if Get_Lies(P,I1,I2) then
+                     Traits_Prec(I1) := I2;
+                     Trouve := True;
+                  end if;
+                  I2 := I2 + 1;
+               end loop;
+               if not(Trouve) then Traits_Prec(I1) := 0;
+               end if;
+            end loop;
+
+            for I in Traits_Prec'Range loop
+               Ada.Text_IO.Put_Line(Integer'Image(I) & " : " & Integer'Image(Traits_Prec(I)));
+            end loop;
+         end Actualise_Traits_Prec;
+
+         ------------------------------------------
+         ------------------------------------------
+
+
+         -- Cette procedure permet de rejeter les propositions des hommes pour ne garder que la meilleur et de commander l'affichage des traits après cette étape si l'on effectue du Pas à Pas(indiqué pas le boolean Direct).
+         procedure Avis_Femmes(P : in out T_Population; Direct : boolean) is
+            Min : Integer := Nb_Couple +1;
+            Elu : Voeu;
+         begin
+
+            for I1 in 1..Nb_Couple loop
+               for I2 in 1..Nb_Couple loop
+                  if Get_lies(P,I2,I1) and then Get_Ponderation_Femme(P,I2,I1) < Min then
+                     Min := Get_Ponderation_Femme(P,I2,I1);
+                     Elu := I2;
+                  end if;
+               end loop;
+               Min := Nb_Couple +1;
+               for I3 in 1..Nb_Couple loop
+                  if I3 /= Elu and then Get_lies(P,I3,I1) then
+                     Set_Lies(P,I3,I1,false);
+                     Set_Rejete(P,I3,I1,true);
+                     for I4 in 1..Nb_Couple loop
+                        if I4 /= I1 and then not(Get_Rejete(P,I3,I4)) then Set_Temp(P,I3,I4,true);
+                        end if;
+                     end loop;
+                  end if;
+               end loop;
+            end loop;
+
+            if not(Direct) then
+
+               Enleve_Indication;
+               Indication(3);
+
+               Gestion_Boutons(False,False,True,False,True,True);
+
+               if not(Recommencer) and then Continuer then
+                  Image_Blanche;
+
+                  Enleve_Indication;
+                  Indication(3);
+
+                  Bouton_Direct(False,true);
+                  Bouton_Fleche(False);
+                  Bouton_Recommencer(False,false);
+                  Bouton_Quitter(False);
+                  Bouton_Num(False,true,1);
+
+                  Demande_Afficher_Couple_Voeux(P);
+                  Afficher_Etat(False,false);
+                  Enleve_Indication;
+                  Demande_Tracer_Trait(P);
+                  Indication(3);
+               end if;
+
+               To_String(P);
+               Actualise_Traits_Prec(P);
+
+            end if;
+
+            for I1 in 1..Nb_Couple loop -- Tous le Temp sont remplacés par de Lies.
+               for I2 in 1..Nb_Couple loop
+                  if Get_Temp(P,I1,I2) then
+                     Set_Temp(P,I1,I2,False);
+                     Set_Lies(P,I1,I2,True);
+                  end if;
+               end loop;
+            end loop;
+
+         end Avis_Femmes;
+
+
+         ------------------------------------------
+         ------------------------------------------
+
+         P : T_Population;
+         Compt : Positive;
+
+      begin
+
+         Termine := False;
+         Initialise_Population(P); -- Creer un population aléatoire
+
+         Image_Blanche;
+         Demande_Afficher_Couple_Voeux(P);
+
+         Bouton_Direct(False,false);
+         Bouton_PaP(False,false);
+         Bouton_Recommencer(False,false);
+         Bouton_Quitter(False);
+         Bouton_Num(False,true,1);
+
+         Indication(2);
+
+         if Get_Nb_Couple = 1 then Choix := True; -- Si on n'a qu'un seul couple seul le direct présente un intérêt.
+         else
+            Gestion_Boutons(True,True,False,False,True,True);
+            if not(Continuer) then goto Fin;
+            end if;
+         end if;
+
+         Enleve_Indication;
+
+         if Choix and then not(Recommencer) then -- Direct
+
+            Bouton_PaP(False,true);
+
+            if Nb_Couple /= 1 then
+               while not(Termine) loop----------------------\
+                                     --
+                  Demande_Hommes(P,Get_Nb_Couple); -----------\
+                  Termine := Condition_Fin(P,Get_Nb_Couple);---> procédé itératif de Gale & Shapley
+                  Avis_Femmes(P,Get_Nb_Couple,true);----------/
+                                                    --/
+               end loop;------------------------------------/
+            end if;
+
+            Demande_Tracer_Trait(P);
+            Bouton_Direct(False,True);
+            Bouton_Recommencer(False,false);
+
+         elsif not(Recommencer) then -- pas à pas
+
+            Bouton_Direct(False,true);
+            Bouton_Fleche(False);
+            Bouton_Recommencer(False,false);
+            Bouton_Quitter(False);
+            Bouton_Num(False,true,1);
+
+            if Nb_Couple = 1 then
+               Demande_Tracer_Trait(P);
+            else
+               Compt := 1;
+               while not(Termine) loop   ---> procédé itératif de Gale & Shapley gràce à ce block
+
+                  Demande_Hommes(P,Get_Nb_Couple);
+                  if Compt /= 1 then
+                     Gestion_Boutons(False,False,True,False,True,True);
+                  end if;
+
+                  if not(Continuer) then goto Fin;
+                  end if;
+
+                  if not(Recommencer) then
+                     Image_Blanche;
+
+                     Bouton_Direct(False,true);
+                     Bouton_Fleche(False);
+                     Bouton_Recommencer(False,false);
+                     Bouton_Quitter(False);
+                     Bouton_Num(False,true,1);
+
+                     Demande_Afficher_Couple_Voeux(P);
+                     Afficher_Etat(True,false);
+                     Enleve_Indication;
+                     Demande_Tracer_Trait(P);
+                     Indication(3);
+
+                  else exit;
+                  end if;
+
+                  Termine := Condition_Fin(P,Get_Nb_Couple);
+                  if not(Termine) then
+                     To_String(P);
+                     Actualise_Traits_Prec(P);
+                     Avis_Femmes(P,Get_Nb_Couple,false);
+                  end if;
+
+                  if not(Continuer) then goto Fin; -- aller à la fin
+                  elsif recommencer then exit;
+                  end if;
+
+                  Compt := Compt + 1;
+               end loop;
+
+            end if;
+         end if;
+
+      end;
+
+      Enleve_Indication;
+      Bouton_PaP(False,True);
+      Afficher_Etat(False,True);
+
+      -- On attend que l'utilisateur clique sur recommencer ou sur quitter. Le if permet de sauter ce block si l'utilisateur a déjà appuyé sur Recommencer.
+      if not(Recommencer) then
+         Gestion_Boutons(False,False,False,False,True,True);
+         if not(Continuer) then goto Fin;
+         end if;
+      end if;
+
+      Image_Blanche;
+      Compteur := Compteur + 1; -- Incrémentation pour la prochaine séquence de voeux aléatoires
+   End loop;
+
+   <<Fin>> -- Ici atterissent les goto.
+
+       delay 0.2;
+       Aurevoir;
+       Abort_Gtk_Loop; -- Ferme automatiquement la fenêtre graphique.
+
+exception
+   when Image_Manquante =>
+      Afficher_Erreur;
+      loop
+         Evt:=Next_Event;
+         if Evt.Trouve and then Evt.X >= 0 and then Evt.X <= 500 and then Evt.Y >= 0 and then Evt.Y <= 300 then
+            exit; --un exit suffit à la fermeture de la fenêtre
+         end if;
+      end loop;
+
+end Client;

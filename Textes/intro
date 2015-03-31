@@ -1,0 +1,11 @@
+Bonjour,
+
+Ce programme vous permet de réaliser des couples à partir d'une population d'hommes et de femmes donnée. Les mariages sont effectués grâce méthode de Gale et Shapley.
+
+Cette population présente un nombre de femmes et d'hommes égal, où chaque individu définit une liste de préférence, contenant tous les individus du sexe opposé.
+
+Vous pouvez à tout moment quitter ou recommencer le programme en appuyant sur le bouton correspondant en bas à droite.
+
+
+<< Le mariage est une loterie >>
+Ben Jonson (1572,1637), Dramaturge anglais de la Renaissance.

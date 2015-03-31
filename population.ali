@@ -1,0 +1,173 @@
+V "GNAT Lib v4.4"
+P SS ZX
+R nnnnnvvnnnnnnnnnnnvnvvvnnnnnvnnnnnnnnnnnnvnnnnnnnnvnnnnnnvvnnnnnnnnnnnnnnnnnn
+
+U population%b		population.adb		14c47f62 NE OO PK GE
+W ada%s			ada.ads			ada.ali
+W ada.calendar%s	a-calend.adb		a-calend.ali
+W ada.numerics%s	a-numeri.ads		a-numeri.ali
+W ada.numerics.discrete_random%s
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W interfaces%s		interfac.ads		interfac.ali
+
+U population%s		population.ads		8039229d BN EE NE OO PK GE
+W ada%s			ada.ads			ada.ali
+W ada.calendar%s	a-calend.adb		a-calend.ali
+W graphic%s		graphic.adb		graphic.ali
+
+D ada.ads		20070406091342 9c7dd3ea
+D a-calend.ads		20090409232307 19486c30
+D a-except.ads		20090409232307 b54b55de
+D a-finali.ads		20090409232307 9eaacebd
+D a-filico.ads		20090409232307 9299732a
+D a-ioexce.ads		20070406091342 be0900a0
+D a-numeri.ads		20080324174807 1cf3e608
+D a-nudira.ads		20090409232307 56734efa
+D a-nudira.adb		20090409232307 cb202240
+D a-stream.ads		20090409232307 34aca5be
+D a-tags.ads		20090409232307 bfa07446
+D a-textio.ads		20090409232307 fe8af46e
+D a-unccon.ads		20070406091342 51e09df2
+D graphic.ads		20130510134156 f005e5d6
+D interfac.ads		20090409232307 a69cad5c
+D i-cstrea.ads		20090409232307 e1e064a9
+D population.ads	20130406122856 6974ab7b
+D population.adb	20130325214443 d5496e8d
+D system.ads		20100127085936 15e10948
+D s-crtl.ads		20090409232307 997234a1
+D s-exctab.ads		20090409232307 5c1c61ae
+D s-ficobl.ads		20090409232307 8bb681e5
+D s-finimp.ads		20090409232307 9449f4cb
+D s-finroo.ads		20090409232307 1408f9d1
+D s-parame.ads		20090409232307 f32e56e9
+D s-secsta.ads		20090409232307 7bae3621
+D s-soflin.ads		20090409232307 0c6fd39d
+D s-stache.ads		20090409232307 257b3be8
+D s-stalib.ads		20090409232307 52b793d5
+D s-stoele.ads		20090409232307 ed966df3
+D s-stoele.adb		20090409232307 e9998c78
+D s-stratt.ads		20090409232307 fef7c1da
+D s-traent.ads		20090409232307 bd5f2753
+D s-unstyp.ads		20090409232307 c0f9fae5
+D s-wchcon.ads		20090409232307 ab028799
+X 1 ada.ads
+16K9*Ada 19e8 17|2r6 2r24 18|1r6 1r23 2r6 8r37
+X 2 a-calend.ads
+36K13*Calendar 358e17 17|2w10 2r28
+38I9*Time
+50O12*Day_Duration{duration}
+52V13*Clock{38I9} 17|11r38
+61V13*Seconds{50O12} 17|11r30
+X 7 a-numeri.ads
+16K13*Numerics 32e17 18|2r10 8r41
+X 8 a-nudira.ads
+50k22*Discrete_Random 114e33 18|2w19 8r50
+63R9 Generator 18|11r28[8]
+65V13 Random{integer} 18|24r28[8] 41r28[8]
+68U14 Reset 18|19r7[8]
+X 12 a-textio.ads
+48K13*Text_IO 506e16 18|1w10 1r27
+166U14*New_Line 18|78r10 80r7
+242U14*Put 18|70r13 71r63 72r68 73r66 75r13
+263U14*Put_Line 18|18r7
+X 14 graphic.ads
+1K9*graphic 47e12 17|1w6 1r19
+4A9*T_Voeux(character)<integer> 17|25r84 29r84 18|115r84 116r15 130r84 131r15
+X 17 population.ads
+6i4 Nb_Couple{positive} 15r38 97r35 97r48 18|161r14
+7i4 Initial{integer} 18|19r22
+9k9*Population 6z4 7z4 99l5 99e15 18|4b14 220l5 220t15
+11i4*Init{integer} 18|18r30 19r17
+13X4*Numero_Inconnu 18|94r31 109r31
+15I12*Voeu{positive} 25r71 29r71 33r84 33r97 37r84 37r97 41r34 45r71 49r73
+. 53r71 57r69 61r76 65r78 69r76 73r74 89r20 90r20 18|8r66 115r71 130r71 145r84
+. 145r97 152r84 152r97 159r34 166r71 173r73 180r71 187r69 194r76 201r78 208r76
+. 215r74
+17A9*T_Population(88R9) 22r53 25r45 29r45 33r51 37r51 45r38 49r40 53r38 57r36
+. 61r43 65r45 69r43 73r41 76r37 97c9 18|6r53 66r37 115r45 130r45 145r51 152r51
+. 166r38 173r40 180r38 187r36 194r43 201r45 208r43 215r41
+22U14*initialise_population 22=36 18|6b14 62l8 62t29
+22a36 Couples{17A9} 18|6b36 20r28 21r31 29r33 38m13 45r33 54m13 56m13 57m13
+. 58m13 59m13
+25V13*Get_Voeux_Homme{14|4A9} 25>29 25>60 18|115b13 126l8 126t23
+25a29 Population{17A9} 18|115b29 118r17 119r20 120r16
+25i60 Homme{15I12} 18|115b60 120r27
+29V13*Get_Voeux_Femme{14|4A9} 29>29 29>60 18|130b13 141l8 141t23
+29a29 Population{17A9} 18|130b29 133r17 134r20 135r16
+29i60 Femme{15I12} 18|130b60 135r30
+33V13*Get_Ponderation_Homme{15I12} 33>35 33>66 33>73 18|145b13 148l8 148t29
+33a35 Population{17A9} 18|145b35 147r14
+33i66 Homme{15I12} 18|145b66 147r25
+33i73 Femme{15I12} 18|145b73 147r31
+37V13*Get_Ponderation_Femme{15I12} 37>35 37>66 37>73 18|152b13 155l8 155t29
+37a35 Population{17A9} 18|152b35 154r14
+37i66 Homme{15I12} 18|152b66 154r25
+37i73 Femme{15I12} 18|152b73 154r31
+41V13*Get_Nb_Couple{15I12} 18|116r26 131r26 159b13 162l8 162t21
+45V13*Get_Lies{boolean} 45>22 45>53 45>60 18|166b13 169l8 169t16
+45a22 Population{17A9} 18|166b22 168r13
+45i53 Homme{15I12} 18|166b53 168r24
+45i60 Femme{15I12} 18|166b60 168r30
+49V13*Get_Rejete{boolean} 49>24 49>55 49>62 18|173b13 176l8 176t18
+49a24 Population{17A9} 18|173b24 175r13
+49i55 Homme{15I12} 18|173b55 175r24
+49i62 Femme{15I12} 18|173b62 175r30
+53V13*Get_Temp{boolean} 53>22 53>53 53>60 18|180b13 183l8 183t16
+53a22 Population{17A9} 18|180b22 182r13
+53i53 Homme{15I12} 18|180b53 182r24
+53i60 Femme{15I12} 18|180b60 182r30
+57V13*Get_Ex{boolean} 57>20 57>51 57>58 18|187b13 190l8 190t14
+57a20 Population{17A9} 18|187b20 189r13
+57i51 Homme{15I12} 18|187b51 189r24
+57i58 Femme{15I12} 18|187b58 189r30
+61U14*Set_Lies 61=23 61>58 61>65 61>82 18|194b14 197l8 197t16
+61a23 Population{17A9} 18|194b23 196m7
+61i58 Homme{15I12} 18|194b58 196r18
+61i65 Femme{15I12} 18|194b65 196r24
+61b82 Valeur{boolean} 18|194b82 196r39
+65U14*Set_Rejete 65=25 65>60 65>67 65>84 18|201b14 204l8 204t18
+65a25 Population{17A9} 18|201b25 203m7
+65i60 Homme{15I12} 18|201b60 203r18
+65i67 Femme{15I12} 18|201b67 203r24
+65b84 Valeur{boolean} 18|201b84 203r41
+69U14*Set_Temp 69=23 69>58 69>65 69>82 18|208b14 211l8 211t16
+69a23 Population{17A9} 18|208b23 210m7
+69i58 Homme{15I12} 18|208b58 210r18
+69i65 Femme{15I12} 18|208b65 210r24
+69b82 Valeur{boolean} 18|208b82 210r39
+73U14*Set_Ex 73=21 73>56 73>63 73>80 18|215b14 218l8 218t14
+73a21 Population{17A9} 18|215b21 217m7
+73i56 Homme{15I12} 18|215b56 217r18
+73i63 Femme{15I12} 18|215b63 217r24
+73b80 Valeur{boolean} 18|215b80 217r37
+76U14*To_String 76>24 18|66b14 81l8 81t17
+76a24 Couples{17A9} 18|66b24 68r28 69r31 70r31 70r103 71r16 72r19 73r19
+80V13*Nombre_Personne_Homme{character} 80>35 18|85b13 96l8 96t29 136r29
+80i35 Personne{integer} 18|85b35 87r12
+84V13*Nombre_Personne_Femme{character} 84>35 18|100b13 111l8 111t29 121r29
+84i35 Personne{integer} 18|100b35 102r12
+88R9 T_Individu 95e14 97r62
+89i7 Voeu_Homme{15I12} 18|29r58 38m50 70r68 120r37 147r38
+90i7 Voeu_Femme{15I12} 18|45r58 54m50 70r140 135r37 154r38
+91b7 Lies{boolean} 18|56m50 71r53 168r37 196m31
+92b7 Rejete{boolean} 18|57m50 72r56 175r37 203m31
+93b7 Temp{boolean} 18|58m50 73r56 182r37 210m31
+94b7 Ex{boolean} 18|59m50 189r37 217m31
+X 18 population.adb
+8K15 Random_couples[8|50] 9r11 11r13
+11r7 Gen{8|63R9[8]} 19r13 24r35 41r35
+13b7 Trouve{boolean} 26m16 28r26 30m22 31m24 35r30 43m16 44r26 46m22 47m24
+. 51r30
+14i7 Val_Temp{positive} 24m16 29r22 38r64 41m16 45r22 54r64
+15i7 I{positive} 25m16 28r43 29r55 33m19 33r24 42m16 44r43 45r41 49m19 49r24
+20i11 Index_Hauteur{integer} 29r41 38r21 44r47 54r21 56r21 57r21 58r21 59r21
+21i14 Index_Largeur{integer} 28r47 38r35 45r43 54r35 56r35 57r35 58r35 59r35
+68i11 Index_Hauteur{integer} 70r39 70r111 71r24 72r27 73r27
+69i14 Index_Largeur{integer} 70r53 70r125 71r38 72r41 73r41
+116a7 Voeux{14|4A9} 121m16 125r14
+118i11 I1{integer} 120r50 121r22
+119i14 I2{integer} 120r33 121r51
+131a7 Voeux{14|4A9} 136m16 140r14
+133i11 I1{integer} 135r50 136r22
+134i14 I2{integer} 135r27 136r51
+

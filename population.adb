@@ -1,0 +1,220 @@
+With Ada.Text_IO; use Ada.Text_IO;
+with Ada.Numerics.Discrete_Random;
+
+package body Population is
+
+   procedure initialise_population(Couples : in out T_Population) is
+
+      package Random_couples is new Ada.Numerics.Discrete_Random(Voeu);
+      use Random_couples;
+
+      Gen : Random_Couples.Generator;
+
+      Trouve : Boolean;
+      Val_Temp : Positive;
+      I : Positive;
+   begin
+
+      Put_Line(Integer'Image(Init));
+      Reset(Gen,Init+initial);
+      for Index_Hauteur in Couples'Range(1) loop
+         for Index_Largeur in Couples'Range(2) loop
+
+            loop
+               Val_Temp := Random(Gen);
+               I := 1;
+               Trouve := False;
+
+               while not(Trouve) and then I < Index_Largeur loop
+                  if Val_Temp = Couples(Index_Hauteur,I).Voeu_Homme then
+                     Trouve := True;
+                  else Trouve := False;
+                  end if;
+                  I := I + 1;
+               end loop;
+               exit when not(Trouve);
+            end loop;
+
+            Couples(Index_Hauteur,Index_Largeur).Voeu_Homme := Val_Temp;
+
+            loop
+               Val_Temp := Random(Gen);
+               I := 1;
+               Trouve := False;
+               while not(Trouve) and then I < Index_Hauteur loop
+                  if Val_Temp = Couples(I,Index_largeur).Voeu_Femme then
+                     Trouve := True;
+                  else Trouve := False;
+                  end if;
+                  I := I + 1;
+               end loop;
+               exit when not(Trouve);
+            end loop;
+
+            Couples(Index_Hauteur,Index_Largeur).Voeu_Femme := Val_Temp;
+
+            Couples(Index_Hauteur,Index_Largeur).Lies := True;
+            Couples(Index_Hauteur,Index_Largeur).Rejete := False;
+            Couples(Index_Hauteur,Index_Largeur).Temp := False;
+            Couples(Index_Hauteur,Index_Largeur).Ex := False;
+         end loop;
+      end loop;
+   end initialise_population;
+
+   -----------------------------------------------------------
+
+   procedure To_String(Couples : in T_Population) is
+   begin
+      for Index_Hauteur in Couples'Range(1) loop
+         for Index_Largeur in Couples'Range(2) loop
+            Put(Integer'Image(Couples(Index_Hauteur,Index_Largeur).Voeu_Homme) & " :" & Integer'Image(Couples(Index_Hauteur,Index_Largeur).Voeu_Femme));
+            if Couples(Index_Hauteur,Index_Largeur).Lies then Put(" Lie");
+            elsif Couples(Index_Hauteur,Index_Largeur).Rejete then Put(" Rejete");
+            elsif Couples(Index_Hauteur,Index_Largeur).Temp then Put(" Temp");
+            end if;
+            Put(" |");
+
+         end loop;
+         New_Line;
+      end loop;
+      New_Line;
+   end To_String;
+
+      -----------------------------------------------------------
+
+   function Nombre_Personne_Homme(Personne : Integer) return Character is
+   begin
+      case Personne is
+         when 1 => Return 'A';
+         when 2 => Return 'B';
+         when 3 => Return 'C';
+         when 4 => Return 'D';
+         when 5 => Return 'E';
+         when 6 => Return 'F';
+         when others => raise Numero_Inconnu;
+      end case;
+   end Nombre_Personne_Homme;
+
+      -----------------------------------------------------------
+
+   function Nombre_Personne_Femme(Personne : Integer) return Character is
+   begin
+      case Personne is
+         when 1 => Return 'a';
+         when 2 => Return 'b';
+         when 3 => Return 'c';
+         when 4 => Return 'd';
+         when 5 => Return 'e';
+         when 6 => Return 'f';
+         when others => raise Numero_Inconnu;
+      end case;
+   end Nombre_Personne_Femme;
+
+      -----------------------------------------------------------
+
+   function Get_Voeux_Homme(Population : in T_Population ; Homme : in voeu) Return T_Voeux is
+      Voeux : T_Voeux(1..Get_Nb_Couple);
+   begin
+      for I1 in Population'Range(2) loop
+         for I2 in Population'Range(2) loop
+            if Population(Homme,I2).Voeu_Homme = I1 then
+               Voeux(I1) := Nombre_Personne_Femme(I2);
+            end if;
+         end loop;
+      end loop;
+      return Voeux;
+   end Get_Voeux_Homme;
+
+      -----------------------------------------------------------
+
+   function Get_Voeux_Femme(Population : in T_Population ; Femme : in voeu) Return T_Voeux is
+      Voeux : T_Voeux(1..Get_Nb_Couple);
+   begin
+      for I1 in Population'Range(1) loop
+         for I2 in Population'Range(1) loop
+            if Population(I2,Femme).Voeu_Femme = I1 then
+               Voeux(I1) := Nombre_Personne_Homme(I2);
+                 end if;
+         end loop;
+      end loop;
+      return Voeux;
+   end Get_Voeux_Femme;
+
+      -----------------------------------------------------------
+
+   function Get_Ponderation_Homme(Population : in T_Population ; Homme, Femme : in voeu) Return Voeu is
+   begin
+      return Population(Homme,Femme).Voeu_Homme;
+   end Get_Ponderation_Homme;
+
+      -----------------------------------------------------------
+
+   function Get_Ponderation_Femme(Population : in T_Population ; Homme, Femme : in voeu) Return Voeu is
+   begin
+      return Population(Homme,Femme).Voeu_Femme;
+   end Get_Ponderation_Femme;
+
+   -----------------------------------------------------------
+
+   function Get_Nb_Couple return Voeu is
+   begin
+      Return Nb_Couple;
+   end Get_Nb_Couple;
+
+   -----------------------------------------------------------
+
+   function Get_Lies(Population : in T_Population ; Homme, Femme : in voeu) return Boolean is
+     begin
+     return Population(Homme,Femme).Lies;
+   end Get_Lies;
+
+     -----------------------------------------------------------
+
+   function Get_Rejete(Population : in T_Population ; Homme, Femme : in voeu) return Boolean is
+     begin
+     return Population(Homme,Femme).Rejete;
+   end Get_Rejete;
+
+   -----------------------------------------------------------
+
+   function Get_Temp(Population : in T_Population ; Homme, Femme : in voeu) return Boolean is
+     begin
+     return Population(Homme,Femme).Temp;
+   end Get_Temp;
+
+   -----------------------------------------------------------
+
+   function Get_Ex(Population : in T_Population ; Homme, Femme : in voeu) return Boolean is
+     begin
+     return Population(Homme,Femme).Ex;
+   end Get_Ex;
+
+   -----------------------------------------------------------
+
+   procedure Set_Lies(Population : in out T_Population ; Homme, Femme : in Voeu; Valeur : boolean) is
+   begin
+      Population(Homme,Femme).Lies := Valeur;
+   end Set_Lies;
+
+   -----------------------------------------------------------
+
+   procedure Set_Rejete(Population : in out T_Population ; Homme, Femme : in voeu; Valeur : boolean) is
+   begin
+      Population(Homme,Femme).Rejete := Valeur;
+   end Set_Rejete;
+
+   -----------------------------------------------------------
+
+   procedure Set_Temp(Population : in out T_Population ; Homme, Femme : in voeu; Valeur : boolean) is
+   begin
+      Population(Homme,Femme).Temp := Valeur;
+   end Set_Temp;
+
+   -----------------------------------------------------------
+
+   procedure Set_Ex(Population : in out T_Population ; Homme, Femme : in voeu; Valeur : boolean) is
+   begin
+      Population(Homme,Femme).Ex := Valeur;
+   end Set_Ex;
+
+end Population;
